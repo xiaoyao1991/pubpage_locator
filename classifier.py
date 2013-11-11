@@ -4,7 +4,6 @@ from training_sample_generator import TrainingSampleGenerator
 from queue import Queue
 from utils import url_cleanup, get_absolute_url, under_same_maindomain
 import urllib2
-from bs4 import BeautifulSoup
 
 class DecisionTree(object):
     def __init__(self):
@@ -39,7 +38,7 @@ class DecisionTree(object):
 
     
 
-    def five_fold_test(self, path):
+    def five_fold_test(self):
         tsg = TrainingSampleGenerator()
         # tsg.generate(path)
         # tsg.serialize()
@@ -57,6 +56,6 @@ class DecisionTree(object):
 
 if __name__ == '__main__':
     dt = DecisionTree()
-    dt.train('sample.txt')
+    dt.five_fold_test()
 
 

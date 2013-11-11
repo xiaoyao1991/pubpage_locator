@@ -31,7 +31,7 @@ def is_valid_url(url):
 
 def is_url_plain_text(url):
     try:
-        res = urllib2.urlopen(url, timeout=5)
+        res = urllib2.urlopen(url, timeout=3)
         content_type = res.info().type # 'text/plain'
         main_content_type = res.info().maintype # 'text'
     except:
@@ -61,11 +61,23 @@ def under_same_maindomain(url1, url2):
 
 def clean_soup(soup):
     soup = soup.find('body')
-    for s in soup('script'): # remove script
-        s.extract()
-    for s in soup('style'): # remove style
-        s.extract()
-    for s in soup.findAll(text=lambda text:isinstance(text, Comment)): # remove comment tag
-        s.extract()
+    try:
+        for s in soup('script'): # remove script
+            s.extract()
+    except:
+        pass
+
+    try:
+        for s in soup('style'): # remove style
+            s.extract()
+    except:
+        pass
+
+    try:
+        for s in soup.findAll(text=lambda text:isinstance(text, Comment)): # remove comment tag
+            s.extract()
+    except:
+        pass
+
 
     return soup

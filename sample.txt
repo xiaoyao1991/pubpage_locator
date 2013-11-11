@@ -58,10 +58,6 @@ roth
 http://cogcomp.cs.illinois.edu/
 http://cogcomp.cs.illinois.edu/page/publications
 
-liu
-http://www.informatik.uni-trier.de/~ley/pers/hd/l/Liu:Bing.html
-http://www.informatik.uni-trier.de/~ley/pers/hd/l/Liu:Bing.html
-
 yoon
 http://www.cast.centers.vt.edu/
 http://www.cast.centers.vt.edu/publications/index.html

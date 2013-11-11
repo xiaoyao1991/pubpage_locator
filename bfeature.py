@@ -10,13 +10,17 @@ class BaseFeature(object):
 
         self.root_url = None
         self.lname = None
+        self.feature_cache = None
 
     
     def extract(self, url):
         raise NotImplementedError("Features must implement the extract method.\n")
 
     def get_raw_html(self, url):
-        return urllib2.urlopen(url).read()
+        try:
+            return urllib2.urlopen(url).read()
+        except:
+            return ''
 
 
 

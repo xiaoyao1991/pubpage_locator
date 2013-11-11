@@ -10,7 +10,7 @@ class TrainingSampleGenerator(object):
     def __init__(self):
         super(TrainingSampleGenerator, self).__init__()
         self.training_samples = []
-        self.processed_training_data = []   #format: tuple([feature vector] , label)
+        self.processed_training_data = []   # format: tuple([feature vector] , label)
         self.feature_generator = FeatureGenerator()
 
     def parse_from_text(self, path):
@@ -36,13 +36,13 @@ class TrainingSampleGenerator(object):
                 target_url = line.strip()
 
 
-    def generate(self, path):   #process and generate training data
+    def generate(self, path):   # process and generate training data
         self.parse_from_text(path)
 
         for raw_training_data in self.training_samples:
             self.processed_training_data.append( self.convert_raw_training_data_to_features(raw_training_data) )
 
-        print processed_training_data
+        print self.processed_training_data
 
 
     def serialize(self):
@@ -101,7 +101,7 @@ class TrainingSampleGenerator(object):
                 # Push sublinks
                 if not stop_pushing_flag:
                     try:
-                        raw_html = urllib2.urlopen(cur_url_info[0])
+                        raw_html = urllib2.urlopen(cur_url_info[0], timeout=3).read()
                         soup = BeautifulSoup(raw_html)
                         a_lst = soup.find_all('a', href=True)
                         for anchor in a_lst:
@@ -114,6 +114,7 @@ class TrainingSampleGenerator(object):
                     except:
                         pass
 
+        self.feature_generator.close_up()
         return training_data_features
 
 
