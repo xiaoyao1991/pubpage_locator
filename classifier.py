@@ -42,7 +42,7 @@ class DecisionTree(object):
         tsg = TrainingSampleGenerator()
         # tsg.generate(path)
         # tsg.serialize()
-        tsg.deserialze()
+        tsg.deserialize()
         five_folds = tsg.five_folds()
 
         for fold in five_folds:

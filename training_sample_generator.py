@@ -40,7 +40,7 @@ class TrainingSampleGenerator(object):
         self.parse_from_text(path)
 
         for raw_training_data in self.training_samples:
-            self.processed_training_data.append( self.convert_raw_training_data_to_features(raw_training_data) )
+            self.processed_training_data +=  self.convert_raw_training_data_to_features(raw_training_data)
 
         print self.processed_training_data
 
@@ -135,6 +135,8 @@ class TrainingSampleGenerator(object):
         five_folds = []
         test_set_len = total_len - 4 * (total_len/5)
 
+        print 'total len: ', total_len
+
         for i in xrange(5):
             test_set = []
             for j in xrange(test_set_len):
@@ -148,7 +150,7 @@ class TrainingSampleGenerator(object):
 
 if __name__ == '__main__':
     tsg = TrainingSampleGenerator()
-    tsg.generate('sample.txt')
-    tsg.serialize()
+    # tsg.generate('sample.txt')
+    # tsg.serialize()
+    tsg.deserialize()
     print tsg.five_folds()
-    # print tsg.training_samples
