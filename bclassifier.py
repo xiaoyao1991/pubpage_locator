@@ -28,8 +28,8 @@ class BaseClassifier(object):
                 print '\tWRONG!!!!!'
 
         if verbose:
-            print 'Correctly labeled: ', count_correct
-            print 'Wrong labeled: ', count_wrong
+            print '\t\t\t\tCorrectly labeled: ', count_correct
+            print '\t\t\t\tWrong labeled: ', count_wrong
 
 
 

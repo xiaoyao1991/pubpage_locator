@@ -140,9 +140,9 @@ class TrainingSampleGenerator(object):
         for i in xrange(5):
             test_set = []
             for j in xrange(test_set_len):
-                idx = i * total_len/5 + j
+                idx = i * (total_len/5) + j
                 test_set.append(self.processed_training_data[idx])
-            training_set = self.processed_training_data[: i*total_len/5] + self.processed_training_data[i*total_len/5 + test_set_len :]
+            training_set = self.processed_training_data[: i*(total_len/5)] + self.processed_training_data[i*(total_len/5) + test_set_len :]
             five_folds.append( (training_set, test_set) )
 
         return five_folds
@@ -150,7 +150,7 @@ class TrainingSampleGenerator(object):
 
 if __name__ == '__main__':
     tsg = TrainingSampleGenerator()
-    tsg.generate('sample.txt')
-    tsg.serialize()
-    # tsg.deserialize()
+    # tsg.generate('sample.txt')
+    # tsg.serialize()
+    tsg.deserialize()
     print tsg.five_folds()
