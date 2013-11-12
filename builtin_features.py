@@ -193,6 +193,29 @@ class HasRecurringPatternFeature(BaseFeature):
         return int(len(recurring_locations) >= self.K)
 
 
+class HasDetectedPublications(BaseFeature):
+    def __init__(self,lname,baseurl, feature_cache):
+        super(HasDetectedPublications, self).__init__()
+        self.lname = lname.lower()
+        self.root_url = baseurl
+        self.feature_cache = feature_cache
+
+    def extract(self, url_info):
+        raw_html = self.feature_cache.query(url_info[0])    #
+        if raw_html is None:
+            raw_html = self.get_raw_html(url_info[0])
+            self.feature_cache.cache(url_info[0], raw_html)
+        
+        from crawler_with_style import PublicationExtractor
+        try:
+            p = PublicationExtractor()
+            publication_candidates = p.locate_records(url_info[0], self.lname, raw_html)
+        except:
+            publication_candidates = []
+
+        return int(len(publication_candidates) >= self.K)
+
+
 class HasConsecutivePDFOutlinksFeature(BaseFeature):
     """
         Empirically: if PDF links exceed 5

@@ -20,10 +20,12 @@ class BaseClassifier(object):
         count_wrong = 0
         for vector_label_pair in testing_data:
             predicted_result = self.classifier.predict(vector_label_pair[0])
+            print 'predicted: ', predicted_result[0], '\treal: ', vector_label_pair[1] 
             if predicted_result[0] == vector_label_pair[1]:
                 count_correct += 1
             else:
                 count_wrong += 1
+                print '\tWRONG!!!!!'
 
         if verbose:
             print 'Correctly labeled: ', count_correct

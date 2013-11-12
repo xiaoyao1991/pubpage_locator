@@ -150,7 +150,7 @@ class TrainingSampleGenerator(object):
 
 if __name__ == '__main__':
     tsg = TrainingSampleGenerator()
-    # tsg.generate('sample.txt')
-    # tsg.serialize()
-    tsg.deserialize()
+    tsg.generate('sample.txt')
+    tsg.serialize()
+    # tsg.deserialize()
     print tsg.five_folds()

@@ -9,3 +9,4 @@ TODO:
 1. Cache the visited urls so that feature extraction will not take so long. (Done) 
 2. Try out both decision tree and SVM for classification. (Done, decision tree surprisingly performs better in the small scale experiment)
 3. Some page with too many outlinks, may occupy the program for too long.
+4. Add Celery support for training sample generation? 
