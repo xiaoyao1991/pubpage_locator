@@ -1,5 +1,6 @@
 from feature_generator import FeatureGenerator
 from training_sample_generator import TrainingSampleGenerator
+import config
 
 class BaseClassifier(object):
     def __init__(self):
@@ -34,11 +35,14 @@ class BaseClassifier(object):
 
 
 
-    def five_fold_test(self):
-        tsg = TrainingSampleGenerator()
-        # tsg.generate(path)
-        # tsg.serialize()
-        tsg.deserialize()
+    def five_fold_test(self, svm=False, regenerate=False):
+        tsg = TrainingSampleGenerator(svm)
+        if regenerate:
+            tsg.generate(config.DATA_SOURCE)
+            tsg.serialize()
+        else:
+            tsg.deserialize()
+
         five_folds = tsg.five_folds()
 
         for fold in five_folds:

@@ -7,11 +7,12 @@ from bs4 import BeautifulSoup
 import pickle
 
 class TrainingSampleGenerator(object):
-    def __init__(self):
+    def __init__(self, svm_feature=False):
         super(TrainingSampleGenerator, self).__init__()
         self.training_samples = []
         self.processed_training_data = []   # format: tuple([feature vector] , label)
         self.feature_generator = FeatureGenerator()
+        self.svm_feature = svm_feature
 
     def parse_from_text(self, path):
         fp = open(path, 'r')
@@ -88,7 +89,7 @@ class TrainingSampleGenerator(object):
             else:
                 url_deduplicator[url_cleanup(cur_url_info[0])] = True
 
-            self.feature_generator.generate_features(cur_url_info)
+            self.feature_generator.generate_features(cur_url_info, self.svm_feature)
 
             if self.feature_generator.features:     #if feautures is [], then means previous is an invalid link
                 if url_cleanup(cur_url_info[0]) == target_url:

@@ -47,12 +47,12 @@ class FeatureGenerator(object):
         self.feature_cache = None
 
 
-    def generate_features(self, url_info):
+    def generate_features(self, url_info, svm_feature=False):
         # preprocess the url_info
         self.features = []
         if is_valid_url(url_info[0]):
             print url_info[0], len(url_info[0])
             for feature_obj in self.pipeline:
-                self.features.append( feature_obj.extract(url_info) )
+                self.features.append( feature_obj.extract(url_info, svm_feature) )
         else:
             self.features = []

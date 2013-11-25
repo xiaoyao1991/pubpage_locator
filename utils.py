@@ -2,6 +2,15 @@ import urllib2
 import urllib
 from bs4 import BeautifulSoup, Comment
 
+
+def count_occurence(keyword, text):
+    counter = 0
+    for token in text.split():
+        if keyword.lower() == token.lower():
+            counter += 1
+
+    return counter
+
 def url_cleanup(url):
     parser = urllib2.urlparse.urlparse(url)
     

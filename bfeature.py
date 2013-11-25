@@ -5,7 +5,7 @@ class BaseFeature(object):
         super(BaseFeature, self).__init__()
         
         self.K = 5  #num of times lname occurs in the page
-        self.KEYWORDS = ['publication', 'publications', 'citation', 'citations', 'curriculum vitae', 
+        self.KEYWORDS = ['publication', 'publications', 'citation', 'citations', 'curriculum vitae', 'papers',
                          'selected publications', 'selected works', 'papers and publications']
 
         self.root_url = None
@@ -13,7 +13,7 @@ class BaseFeature(object):
         self.feature_cache = None
 
     
-    def extract(self, url):
+    def extract(self, url, svm_feature=False):
         raise NotImplementedError("Features must implement the extract method.\n")
 
     def get_raw_html(self, url):
