@@ -32,10 +32,10 @@ class FeatureGenerator(object):
         self.add_feature(HasKeywordsFeature)
         self.add_feature(TitleHasKeywordsFeature)
         self.add_feature(HasLnameMoreThanKTimesFeature)
-        self.add_feature(HasRecurringPatternFeature)
+        # self.add_feature(HasRecurringPatternFeature)      #temporarily removed for svm
         self.add_feature(HasDetectedPublications)
         self.add_feature(HasConsecutivePDFOutlinksFeature)
-        self.add_feature(HasManyBookmarkLinkFeature)
+        # self.add_feature(HasManyBookmarkLinkFeature)  #temporarily removed for svm
 
 
     def close_up(self):

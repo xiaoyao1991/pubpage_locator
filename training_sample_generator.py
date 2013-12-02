@@ -5,6 +5,7 @@ from utils import url_cleanup, get_absolute_url, under_same_maindomain
 import urllib2
 from bs4 import BeautifulSoup
 import pickle
+import config
 
 class TrainingSampleGenerator(object):
     def __init__(self, svm_feature=False):
@@ -44,6 +45,19 @@ class TrainingSampleGenerator(object):
             self.processed_training_data +=  self.convert_raw_training_data_to_features(raw_training_data)
 
         print self.processed_training_data
+
+
+    def prepare_libsvm(self, data_lst, path):
+        fw = open(path, 'w')
+        for tp in data_lst:
+            feature_lst = tp[0]
+            label = tp[1]
+
+            line = str(label) + ' '
+            for i in xrange(len(feature_lst)):
+                line += str(i+1) + ':' + str(feature_lst[i]) + ' '
+            fw.write(line + '\n')
+        fw.close()
 
 
     def serialize(self):
@@ -144,6 +158,8 @@ class TrainingSampleGenerator(object):
                 idx = i * (total_len/5) + j
                 test_set.append(self.processed_training_data[idx])
             training_set = self.processed_training_data[: i*(total_len/5)] + self.processed_training_data[i*(total_len/5) + test_set_len :]
+            self.prepare_libsvm(training_set, config.LIBSVM_TRAINING_FOLDS[i])
+            self.prepare_libsvm(test_set, config.LIBSVM_TESTING_FOLDS[i])
             five_folds.append( (training_set, test_set) )
 
         return five_folds
@@ -154,4 +170,5 @@ if __name__ == '__main__':
     # tsg.generate('sample.txt')
     # tsg.serialize()
     tsg.deserialize()
+    # print tsg.processed_training_data
     print tsg.five_folds()

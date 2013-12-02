@@ -11,7 +11,10 @@ class SVM(BaseClassifier):
     
     def train(self, training_data):
         self.classifier = svm.SVC()
+        print training_data[0]
         self.classifier.fit(training_data[0], training_data[1])   # X, Y
+
+        print self.classifier
 
 
     def predict(self, lname, root_url):
