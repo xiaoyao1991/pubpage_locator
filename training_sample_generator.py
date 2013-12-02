@@ -66,7 +66,11 @@ class TrainingSampleGenerator(object):
         fp.close()
 
     def deserialize(self):
-        self.processed_training_data = pickle.load(open('processed_training_data.pkl', 'rb'))
+        # self.processed_training_data = pickle.load(open('processed_training_data.pkl', 'rb'))
+        # self.processed_training_data = pickle.load(open('processed_training_data.pkl.bak', 'rb'))
+        self.processed_training_data = pickle.load(open('processed_training_data.pkl.svm.full', 'rb'))
+
+        print len(self.processed_training_data)
 
 
     def convert_raw_training_data_to_features(self, train_data):
@@ -171,4 +175,4 @@ if __name__ == '__main__':
     # tsg.serialize()
     tsg.deserialize()
     # print tsg.processed_training_data
-    print tsg.five_folds()
+    # print tsg.five_folds()
