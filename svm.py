@@ -23,6 +23,6 @@ class SVM(BaseClassifier):
 
 if __name__ == '__main__':
     dt = SVM()
-    dt.five_fold_test(svm=True, regenerate=False)
+    dt.five_fold_test(svm=False, regenerate=False)
 
 

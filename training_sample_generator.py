@@ -67,9 +67,9 @@ class TrainingSampleGenerator(object):
 
     def deserialize(self):
         # self.processed_training_data = pickle.load(open('processed_training_data.pkl', 'rb'))
-        # self.processed_training_data = pickle.load(open('processed_training_data.pkl.bak', 'rb'))
-        self.processed_training_data = pickle.load(open('processed_training_data.pkl.svm.full', 'rb'))
-
+        self.processed_training_data = pickle.load(open('processed_training_data.pkl.bak', 'rb'))
+        # self.processed_training_data = pickle.load(open('processed_training_data.pkl.svm.full', 'rb'))
+        # print self.processed_training_data
         print len(self.processed_training_data)
 
 

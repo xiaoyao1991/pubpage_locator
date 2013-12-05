@@ -1,3 +1,5 @@
+# -c 1000 is now the best
+
 svm-train $1 $2 $3 $4 $5 $6 scaled_libsvm_training_fold_1
 svm-train $1 $2 $3 $4 $5 $6 scaled_libsvm_training_fold_2
 svm-train $1 $2 $3 $4 $5 $6 scaled_libsvm_training_fold_3
