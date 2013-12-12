@@ -8,9 +8,9 @@ import urllib2
 class SVM(BaseClassifier):
     def __init__(self):
         super(SVM, self).__init__()
-    
-    def train(self, training_data):
         self.classifier = svm.SVC()
+
+    def train(self, training_data):
         print training_data[0]
         self.classifier.fit(training_data[0], training_data[1])   # X, Y
 

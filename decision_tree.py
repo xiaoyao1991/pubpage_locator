@@ -10,10 +10,9 @@ import pydot
 class DecisionTree(BaseClassifier):
     def __init__(self):
         super(DecisionTree, self).__init__()
-    
+        self.classifier = tree.DecisionTreeClassifier()
     
     def train(self, training_data):
-        self.classifier = tree.DecisionTreeClassifier()
         self.classifier.fit(training_data[0], training_data[1])   # X, Y
 
 
@@ -24,6 +23,7 @@ class DecisionTree(BaseClassifier):
 if __name__ == '__main__':
     dt = DecisionTree()
     dt.five_fold_test()
+    print dt.classifier
 
     # Print tree
     # dot_data = StringIO() 
